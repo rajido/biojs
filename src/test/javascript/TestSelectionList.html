@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+	  <link href="../../main/resources/css/icheck/minimal/minimal.css" rel="stylesheet" type="text/css">
+      <link href="../../main/resources/css/Biojs.SelectionList.css" rel="stylesheet" type="text/css">
+
+      <script language="JavaScript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script language="JavaScript" type="text/javascript" src="../../main/resources/dependencies/icheck/jquery.icheck.v0.9.1.js"></script>
+	  <script type="text/javascript" src="../../main/javascript/Biojs.js"></script>
+	  <script type="text/javascript" src="../../main/javascript/Biojs.SelectionList.js"></script>
+      <!--<script language="JavaScript" type="text/javascript" src="../../main/resources/dependencies/jquery/jquery-1.9.1.js"></script>        -->
+      <script type="text/javascript">
+		var view2;
+		window.onload = function() {
+
+
+            view2 = new Biojs.SelectionList({
+			        "target" : "holder2",
+                    "name": "p2",
+                    "inputData":
+                    {
+                           "Pathway 1":["Value A","Value C","Value D"],
+                           "Pathway 2":["Value A","Value B","O35737","Q8CIE6","Q8VBV7","Q9Z2U1","Q9CQM9","Q9CZ44","Q8BH59","Q9Z2U0","P48787","P28063","P14131","Q9JHU4","Q9JMH6","O70435","Q9CPN9"],
+                           "Pathway 3":["Value B","Value E","O35737","Q8CIE6","Q8VBV7","Q9Z2U1","Q9CQM9","Q9CZ44","Q8BH59","Q9Z2U0","P48787","P28063","P14131","Q9JHU4","Q9JMH6","O70435","Q9CPN9"],
+                           "Pathway 4":["Value E"],
+                           "Pathway 5":["Value B","Value F"],
+                           "Pathway 6":["Value A","Value F"],
+                           "Pathway 7":["Value A"]
+                     },
+                    "alternativeValues": {"Value A":"", "Value B":"IDB", "Value X":"IDX"},
+                    "alternativeKeys": {"Pathway 2":"P2", "Pathway 4":"", "Pathway 5":"P5"}
+			});
+            view2.checkInputs(new Array("Pathway 2"));
+
+
+		};
+
+	  </script>
+
+
+	</head>
+	<body>
+
+    <a href="#" OnClick="view2.displayAlternativeValues();" >alt-value</a>
+    <br />
+    <a href="#" OnClick="view2.displayPrimaryValues();" >pri-value</a>
+    <br />
+    <a href="#" OnClick="view2.displayAlternativeKeys();" >alt-key</a>
+    <br />
+    <a href="#" OnClick="view2.displayPrimaryKeys();" >pri-key</a>
+    <br />
+
+<h1>Test 2</h1>
+    <div id="holder2"></div>
+ 	<div id="log"></div>
+
+    </body>
+</html>

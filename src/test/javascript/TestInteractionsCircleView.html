@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+	  <link href="../../main/resources/css/Biojs.InteractionsCircleView.css" rel="stylesheet" type="text/css">
+	  <script type="text/javascript" src="../../main/javascript/Biojs.js"></script>
+	  <script type="text/javascript" src="../../main/javascript/Biojs.InteractionsCircleView.js"></script>
+	  <script language="JavaScript" type="text/javascript" src="../../main/resources/dependencies/d3/d3.v2.5.js"></script>
+      <script language="JavaScript" type="text/javascript" src="../../main/resources/dependencies/d3.layout.js"></script>
+      <script language="JavaScript" type="text/javascript" src="../../main/resources/dependencies/packages.js"></script>
+      <script type="text/javascript">
+		var view;
+		window.onload = function() {
+            view = new Biojs.InteractionsCircleView({
+			        "target" : "holder",
+                    "inputData": [
+                                     {"interactor":"Q9Y6C2","interactions":["P07200","Q15052"]},
+                                     {"interactor":"P37173","interactions":["P07200","Q15052","Q15750"]},
+                                     {"interactor":"Q15052","interactions":["P37173"]},
+                                     {"interactor":"Q15750","interactions":["P37173","P07200"]},
+                                     {"interactor":"P07200","interactions":["Q9Y6C2","P37173"]}
+                                 ],
+                     "alternativeNames": {"P07200":"","P37173":"BBBBBB","Q15750":"CCCCCC"},
+                     "width":800,
+                     "height": 800,
+                     "tension": 0.5
+			});
+//            view.selectNodes(["P07200","Q15052","Q9Y6C2"]);
+            //view.unselectNodes(["Q15052","Q9Y6C2"]);
+//            view.selectNode("P07200");
+//            view.selectNode("Q15750");
+//            view.unselectAllNodes();
+//            view.unselectNode("P07200");
+//            view.selectNode("Q15052");
+//            view.unselectNode("Q15750");
+//            view.displayAlternativeNames();
+//            view.displayPrimaryNames();
+            view.highlightNode("P37173");
+
+		};
+
+
+
+
+
+
+	  </script>
+	</head>
+	<body>
+    <h1>Test</h1>
+	  <div id="holder"></div>
+
+
+	  <div id="log"></div>
+
+    </body>
+</html>

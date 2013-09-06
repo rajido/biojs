@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+	  <link href="../../main/resources/css/icheck/minimal/minimal.css" rel="stylesheet" type="text/css">
+      <link href="../../main/resources/css/Biojs.InteractionsCircleView.css" rel="stylesheet" type="text/css">
+      <link href="../../main/resources/css/Biojs.SelectionList.css" rel="stylesheet" type="text/css">
+
+      <script language="JavaScript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script language="JavaScript" type="text/javascript" src="../../main/resources/dependencies/icheck/jquery.icheck.v0.9.1.js"></script>
+      <script language="JavaScript" type="text/javascript" src="../../main/resources/dependencies/d3/d3.v2.5.js"></script>
+      <script language="JavaScript" type="text/javascript" src="../../main/resources/dependencies/d3.layout.js"></script>
+      <script language="JavaScript" type="text/javascript" src="../../main/resources/dependencies/packages.js"></script>
+
+	  <script type="text/javascript" src="../../main/javascript/Biojs.js"></script>
+      <script type="text/javascript" src="../../main/javascript/Biojs.InteractionsCircleView.js"></script>
+	  <script type="text/javascript" src="../../main/javascript/Biojs.SelectionList.js"></script>
+
+
+<script type="text/javascript">
+     		var circleView;
+            var view;
+     		window.onload = function() {
+                 /* COMP 01 */
+                 circleView = new Biojs.InteractionsCircleView({
+     			        "target" : "holder",
+                         "inputData": [
+//                             {"interactor":"Q9Y6C2","interactions":["P07200","Q15052"]},
+//                             {"interactor":"P37173","interactions":["P07200","Q15052","Q15750"]},
+//                             {"interactor":"Q15750","interactions":["P07200"]}
+                             {"interactor":"Q9Y6C2","interactions":["P07200","Q15052"]},
+                             {"interactor":"P37173","interactions":["P07200","Q15052","Q15750"]},
+                             {"interactor":"Q15052","interactions":[]},
+                             {"interactor":"Q15750","interactions":["P07200"]},
+                             {"interactor":"P07200","interactions":[]}
+//                                          {"interactor":"Q9Y6C2","interactions":["P07200","Q15052"]},
+//                                          {"interactor":"P37173","interactions":["P07200","Q15052","Q15750"]},
+//                                          {"interactor":"Q15052","interactions":["P37173"]},
+//                                          {"interactor":"Q15750","interactions":["P37173","P07200"]},
+//                                          {"interactor":"P07200","interactions":["Q9Y6C2","P37173"]}
+                                      ],
+                          "width":800,
+                          "height": 800,
+                          "tension": 0.8
+     			});
+                 //circleView.selectNodes(["P07200","Q15052","Q9Y6C2"]);
+                 //circleView.unselectNodes(["Q15052","Q9Y6C2"]);
+
+                /* COMP 02 */
+                 view = new Biojs.SelectionList({
+     			        "target" : "holder2",
+                         "name": "p1",
+                         "inputData": {
+                                "Pathway 1":["Q9Y6C2","P37173","Q15052"],
+                                "Pathway 2":["Q15750","Q9Y6C2"],
+                                "Pathway 3":["P07200","Q15052"],
+                                "Pathway 4":["P07200"],
+                                "Pathway 5":["Q9Y6C2","P07200"],
+                                "Pathway 6":["XXXXXX","P37173"],
+                                "Pathway 7":["Q15750"]
+                            }
+     			});
+
+                 //view.checkInputs(new Array("Pathway 2"));
+                 //view.checkInputs(new Array("Pathway 3"));
+                 //view.uncheckInputs(new Array("Pathway 2"));
+
+                 /* EVENTS */
+                 circleView.onNodeClick(
+                         function(event){
+                             if(event.highlighted){
+                                 view.highlightEntries(new Array(event.nodeName), "highlighted");
+                             } else {
+                                 view.unhighlightEntries("highlighted");
+                             }
+                         }
+                 )
+
+                 view.onInputSelection(
+                     function( event ) {
+                        //alert( event.input + " " + event.action);
+                        //console.log(event.selectedInputs);
+                        //console.log(event.selectedEntries);
+                        circleView.unselectAllNodes();
+                        circleView.selectNodes(event.selectedEntries);
+                     }
+                  );
+
+
+     		};
+
+
+
+
+
+
+
+
+	  </script>
+
+	</head>
+	<body>
+
+    <h1>Test options</h1>
+    <ul>
+        <li><a href="javascript:void(0)" onclick="jQuery('.slc_entry_legend').toggle();">Hide/Show entry legends</a></li>
+        <li>Check all pathways</li>
+        <li>Uncheck all pathways</li>
+        <li>Highlight Pathways 5</li>
+        <li>Unighlight Pathways 5</li>
+    </ul>
+
+    <h1>Component 2</h1>
+
+        <div id="holder2"></div>
+    <h1>Component 1</h1>
+        <div id="holder"></div>
+
+
+<h1>Logs</h1>
+ 	<div id="log"></div>
+
+    </body>
+</html>
